@@ -36,7 +36,12 @@ public class DataBaseInitializer
 
     public void initDataBase()
     {
+    	
+    	System.out.println("agregando users");
         User userUser = new User("user", this.passwordEncoder.encode("user"));
+        
+        
+        
         userUser.addRole(Role.USER);
         this.userDao.save(userUser);
 
@@ -46,7 +51,7 @@ public class DataBaseInitializer
         this.userDao.save(adminUser);
 
         long timestamp = System.currentTimeMillis() - (1000 * 60 * 60 * 24);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             BlogPost blogPost = new BlogPost();
             blogPost.setContent("This is example content " + i);
             blogPost.setDate(new Date(timestamp));

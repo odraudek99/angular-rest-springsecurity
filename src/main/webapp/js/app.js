@@ -11,6 +11,11 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 				templateUrl: 'partials/edit.html',
 				controller: EditController
 			});
+			
+			$routeProvider.when('/publico', {
+				templateUrl: 'partials/public.html',
+				controller: PublicController
+			});
 
 			$routeProvider.when('/login', {
 				templateUrl: 'partials/login.html',
@@ -123,6 +128,14 @@ function IndexController($scope, BlogPostService) {
 }
 
 
+function PublicController($scope, BlogPostServicePublic) {
+
+	$scope.blogPosts = BlogPostServicePublic.query();
+
+	
+}
+
+
 function EditController($scope, $routeParams, $location, BlogPostService) {
 
 	$scope.blogPost = BlogPostService.get({id: $routeParams.id});
@@ -149,10 +162,15 @@ function CreateController($scope, $location, BlogPostService) {
 
 function LoginController($scope, $rootScope, $location, $cookieStore, UserService) {
 	
+	console.log('username: '+$scope.username+', password: '+$scope.password);
+	
 	$scope.rememberMe = false;
 	
 	$scope.login = function() {
 		UserService.authenticate($.param({username: $scope.username, password: $scope.password}), function(authenticationResult) {
+			
+			
+			
 			var accessToken = authenticationResult.token;
 			$rootScope.accessToken = accessToken;
 			if ($scope.rememberMe) {
@@ -182,7 +200,15 @@ services.factory('UserService', function($resource) {
 		);
 });
 
+services.factory('BlogPostServicePublic', function ($resource) {
+
+	return $resource('rest/blogposts/');
+});
+
+
 services.factory('BlogPostService', function ($resource) {
 
 	return $resource('rest/blogposts/:id', {id: '@id'});
 });
+
+

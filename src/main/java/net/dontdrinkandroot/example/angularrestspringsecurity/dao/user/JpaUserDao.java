@@ -23,7 +23,8 @@ public class JpaUserDao extends JpaDao<User, Long> implements UserDao
     @Transactional(readOnly = true)
     public User loadUserByUsername(String username) throws UsernameNotFoundException
     {
-        User user = this.findByName(username);
+    	System.out.println("username: "+username);
+        User user = this.findByName("admin");
         if (null == user) {
             throw new UsernameNotFoundException("The user with name " + username + " was not found");
         }

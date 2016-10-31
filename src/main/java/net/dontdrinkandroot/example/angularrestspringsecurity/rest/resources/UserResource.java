@@ -64,6 +64,7 @@ public class UserResource
     @Produces(MediaType.APPLICATION_JSON)
     public AccessToken authenticate(@FormParam("username") String username, @FormParam("password") String password)
     {
+    	System.out.println("username: "+username+", password: "+password);
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
         Authentication authentication = this.authManager.authenticate(authenticationToken);

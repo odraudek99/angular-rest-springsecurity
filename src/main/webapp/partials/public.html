@@ -1,0 +1,13 @@
+
+
+<div class="page-header">
+	<h3>Blog Posts</h3>
+</div>
+
+<div ng-repeat="blogPost in blogPosts">
+	<hr />
+
+	<h4>{{blogPost.date | date}}</h4>
+	<p>{{blogPost.content}}</p>
+</div>
+<hr />
