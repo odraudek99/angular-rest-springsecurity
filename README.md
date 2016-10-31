@@ -24,8 +24,8 @@ Any feedback is welcome, and I will incorporate useful pull requests.
 Technologies
 ------------
 
-* [AngularJS](http://angularjs.org/)
-* [Bootstrap](http://getbootstrap.com/)
+* [AngularJS](http://angularjs.org/) -> 1.5.8
+* [Bootstrap](http://getbootstrap.com/) -> 3.3.7
 * [Jersey](https://jersey.java.net/)
 * [Spring Security](http://projects.spring.io/spring-security/)
 * [Hibernate](http://hibernate.org/)
